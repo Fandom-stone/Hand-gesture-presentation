@@ -1,0 +1,21 @@
+# Gesture-Controlled Presentation System - pinned dependencies
+# Python 3.11 or 3.12 (64-bit) required. Do NOT use Python 3.13+: mediapipe
+# does not yet support it as of this writing (Sept 2026).
+#
+# Exact patch numbers drift as new wheels are published. Before your demo,
+# re-resolve with:
+#   pip install mediapipe opencv-python scikit-learn pandas pyautogui joblib
+#   pip freeze > requirements.txt
+# so the whole team runs an identical, tested environment.
+
+mediapipe==1.0.1
+opencv-python==4.10.0.84
+scikit-learn==1.9.1
+pandas>=2.2
+numpy>=1.26
+pyautogui>=0.9.54
+joblib>=1.3
+
+# Not part of the doc's core stack (Section 6.2) but standard and needed to
+# render the confusion-matrix figure for the evaluation section (Section 8.4).
+matplotlib>=3.8

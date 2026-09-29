@@ -1,0 +1,165 @@
+Gesture-Controlled Presentation System - Static Pose Training Report
+Dataset: D:\college\S3\Projects\gesture-presentation-control (CLD)\data\gesture_data.csv  (8010 samples, 63 features)
+Random Forest size: 75 trees
+Deployed model trained on the 'temporal' split.
+
+EVALUATION METHOD
+  Two accuracies are reported for every model.
+
+  Split: samples are split per class by TIME -- earliest 80% train, latest
+    20% test. A random split is optimistic here because the collector records
+    many near-identical consecutive frames while a key is held, and a random
+    split puts near-duplicates of the test rows into the training set. The
+    random-split figure is printed alongside for comparison.
+
+  Label accuracy:  did the classifier name the right gesture?
+  Action accuracy: would the system have taken the right action? Labels that
+    trigger the same action are not a user-visible error when confused.
+    Labels sharing one action: NEUTRAL, OPEN_PALM
+
+######################################################################
+# TEMPORAL SPLIT (6408 train / 1602 test)
+######################################################################
+
+=== Random Forest (primary) ===
+Accuracy (label) : 0.9007
+Accuracy (action): 1.0000
+Training time: 0.546s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      0.46      0.63       296
+   OPEN_PALM       0.62      1.00      0.77       259
+    POINTING       1.00      1.00      1.00       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           0.90      1602
+   macro avg       0.92      0.89      0.88      1602
+weighted avg       0.94      0.90      0.89      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[137 159   0   0   0]
+ [  0 259   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+
+=== K-Nearest Neighbours (baseline) ===
+Accuracy (label) : 0.9007
+Accuracy (action): 0.9875
+Training time: 0.013s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      0.46      0.63       296
+   OPEN_PALM       0.65      1.00      0.79       259
+    POINTING       0.92      1.00      0.96       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           0.90      1602
+   macro avg       0.92      0.89      0.88      1602
+weighted avg       0.93      0.90      0.89      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[137 139   0  20   0]
+ [  0 259   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+
+=== SVM - RBF kernel (baseline) ===
+Accuracy (label) : 0.9557
+Accuracy (action): 1.0000
+Training time: 0.159s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      0.76      0.86       296
+   OPEN_PALM       0.78      1.00      0.88       259
+    POINTING       1.00      1.00      1.00       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           0.96      1602
+   macro avg       0.96      0.95      0.95      1602
+weighted avg       0.97      0.96      0.96      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[225  71   0   0   0]
+ [  0 259   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+
+######################################################################
+# RANDOM SPLIT (6408 train / 1602 test)
+######################################################################
+
+=== Random Forest (primary) ===
+Accuracy (label) : 1.0000
+Accuracy (action): 1.0000
+Training time: 0.544s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      1.00      1.00       296
+   OPEN_PALM       1.00      1.00      1.00       259
+    POINTING       1.00      1.00      1.00       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           1.00      1602
+   macro avg       1.00      1.00      1.00      1602
+weighted avg       1.00      1.00      1.00      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[296   0   0   0   0]
+ [  0 259   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+
+=== K-Nearest Neighbours (baseline) ===
+Accuracy (label) : 1.0000
+Accuracy (action): 1.0000
+Training time: 0.013s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      1.00      1.00       296
+   OPEN_PALM       1.00      1.00      1.00       259
+    POINTING       1.00      1.00      1.00       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           1.00      1602
+   macro avg       1.00      1.00      1.00      1602
+weighted avg       1.00      1.00      1.00      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[296   0   0   0   0]
+ [  0 259   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+
+=== SVM - RBF kernel (baseline) ===
+Accuracy (label) : 0.9969
+Accuracy (action): 1.0000
+Training time: 0.178s
+              precision    recall  f1-score   support
+
+        FIST       1.00      1.00      1.00       301
+     NEUTRAL       1.00      0.99      0.99       296
+   OPEN_PALM       0.98      1.00      0.99       259
+    POINTING       1.00      1.00      1.00       246
+   THUMBS_UP       1.00      1.00      1.00       500
+
+    accuracy                           1.00      1602
+   macro avg       1.00      1.00      1.00      1602
+weighted avg       1.00      1.00      1.00      1602
+
+Confusion matrix (rows=true, cols=pred), labels=['NEUTRAL', 'OPEN_PALM', 'FIST', 'POINTING', 'THUMBS_UP']:
+[[292   4   0   0   0]
+ [  1 258   0   0   0]
+ [  0   0 301   0   0]
+ [  0   0   0 246   0]
+ [  0   0   0   0 500]]
+

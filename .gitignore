@@ -1,0 +1,39 @@
+# --------------------------------------------------------------------------
+# Never commit
+# --------------------------------------------------------------------------
+venv/
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.DS_Store
+Thumbs.db
+
+# Scratch output folders
+Claude outputs/
+
+# --------------------------------------------------------------------------
+# Deliberately COMMITTED, despite being generated
+# --------------------------------------------------------------------------
+# data/*.csv          - the recorded datasets (~10 MB)
+# models/*.pkl        - the trained models (~1 MB)
+# models/*.png, *.txt - confusion matrices and training reports
+#
+# A general-purpose project would ignore all of these as build artifacts. This
+# one is coursework: the datasets ARE the contribution, the reports are the
+# evidence, and anyone cloning it should be able to run the system straight
+# away instead of re-recording 8,000 hand samples first. Total is about 11 MB,
+# which is nothing to GitHub (the per-file limit is 100 MB).
+#
+# To exclude them instead, uncomment:
+# data/*.csv
+# models/*.pkl
+# models/*.png
+# models/*.txt
+
+# --------------------------------------------------------------------------
+# Third-party model bundle
+# --------------------------------------------------------------------------
+# 7.8 MB, not ours, and `python scripts/download_model.py` fetches it in one
+# step. Comment this line out if you would rather a clone need no downloads.
+assets/hand_landmarker.task
